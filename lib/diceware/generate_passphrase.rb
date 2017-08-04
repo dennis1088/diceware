@@ -1,5 +1,5 @@
 class GeneratePassphrase
-  def initialize(words_repo)
+  def initialize(words_repo = WordRepo.new)
     @words_repo = words_repo
   end
 

@@ -7,7 +7,7 @@ class DicewareTest < Minitest::Test
 
   def test_that_it_generates_a_passphrase
   	num_words = 5
-  	passwordGenerator = GeneratePassphrase.new(WordRepo.new)
+  	passwordGenerator = GeneratePassphrase.new()
 
   	passphrase = passwordGenerator.generate(num_words)
 
