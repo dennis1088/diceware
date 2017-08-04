@@ -5,9 +5,12 @@ class DicewareTest < Minitest::Test
     refute_nil ::Diceware::VERSION
   end
 
-  def test_it_does_something_useful
+  def test_that_it_generates_a_passphrase
+  	num_words = 5
   	passwordGenerator = GeneratePassphrase.new(WordRepo.new)
-  	puts passwordGenerator.generate(Struct.new(:num_words).new(5))
-    assert true
+
+  	passphrase = passwordGenerator.generate(num_words)
+
+    assert_equal(num_words, passphrase.split('-').length)
   end
 end
