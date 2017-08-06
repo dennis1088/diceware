@@ -6,11 +6,11 @@ class DicewareTest < Minitest::Test
   end
 
   def test_that_it_generates_a_passphrase
-  	num_words = 5
   	passwordGenerator = Diceware::GeneratePassphrase.new()
+  	request = Diceware::GeneratePassphraseRequest.new(5)
 
-  	passphrase = passwordGenerator.generate(num_words)
+  	passphrase = passwordGenerator.generate(request)
 
-    assert_equal(num_words, passphrase.split('-').length)
+    assert_equal(5, passphrase.split('-').length)
   end
 end

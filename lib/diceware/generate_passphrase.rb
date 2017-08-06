@@ -4,10 +4,10 @@ module Diceware
       @words_repo = words_repo
     end
 
-    def generate(num_words)
+    def generate(request)
       words = Array.new
 
-      num_words.times do
+      request.num_words.times do
         randomIndex = (0..4).map { rand(1..6) }.join.to_i 
         words << @words_repo.find(randomIndex)
       end
