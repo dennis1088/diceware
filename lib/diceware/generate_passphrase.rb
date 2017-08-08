@@ -8,8 +8,16 @@ module Diceware
       words = Array.new
 
       request.num_words.times do
-        randomIndex = (0..4).map { rand(1..6) }.join.to_i 
+        randomIndex = (0..4).map { rand(1..6) }.join.to_i
         words << @words_repo.find(randomIndex)
+      end
+
+      if request.capitalize
+        words = words.map {|x| x.capitalize}
+      end
+
+      if request.add_digit
+        words[words.count-1] = rand(0..9)
       end
 
       words.join('-')
