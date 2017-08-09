@@ -5,20 +5,15 @@ module Diceware
     end
 
     def generate(request)
-      words = Array.new
+      words = []
 
       request.num_words.times do
-        randomIndex = (0..4).map { rand(1..6) }.join.to_i
-        words << @words_repo.find(randomIndex)
+        random_index = (0..4).map { rand(1..6) }.join.to_i
+        words << @words_repo.find(random_index)
       end
 
-      if request.capitalize
-        words = words.map {|x| x.capitalize}
-      end
-
-      if request.add_digit
-        words[words.count-1] = rand(0..9)
-      end
+      words = words.map { |x| x.capitalize } if request.capitalize
+      words[words.count - 1] = rand(0..9) if request.add_digit
 
       words.join('-')
     end
